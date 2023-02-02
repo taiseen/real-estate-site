@@ -1,20 +1,24 @@
+import { Footer, Header, PageNotFound } from './components';
 import { Routes, Route } from 'react-router-dom';
-import { Footer, Header } from './components';
-import PropertyDetails from './pages/PropertyDetails';
-import Home from './pages/Home';
+import { Home, PropertyDetails } from './pages';
+
 
 const App = () => {
 
   return (
     <main className='max-w-[1440px] mx-auto bg-white'>
+
       <Header />
 
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/property/:id' element={<PropertyDetails />} />
+
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
 
       <Footer />
+
     </main>
   )
 }

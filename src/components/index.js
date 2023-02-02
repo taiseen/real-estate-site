@@ -2,6 +2,7 @@ export { default as FeaturesSecond } from './CountryDropdown';
 export { default as Newsletter } from './PriceRangeDropdown';
 export { default as ProductSlider } from './HouseContext';
 export { default as NavMobile } from './PropertyDropdown';
+export { default as PageNotFound } from './PageNotFound';
 export { default as TestimonialSlider } from './Banner';
 export { default as Testimonial } from './HouseList';
 export { default as NewItemsSlider } from './House';

@@ -36,3 +36,10 @@ yarn dev
 * File & Folder Structure
 * CSS writing structure
 * Responsive Mobile Menu
+
+<!-- 
+
+https://youtu.be/CHe_QJcTK5Y
+https://app.netlify.com/sites/realestate-lp/overview
+
+-->
