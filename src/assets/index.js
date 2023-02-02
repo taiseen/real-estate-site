@@ -56,6 +56,8 @@ import Agent10 from './img/agents/agent10.png';
 import Agent11 from './img/agents/agent11.png';
 import Agent12 from './img/agents/agent12.png';
 
+import houseBanner from './img/house-banner.png';
+
 const images = {
     House1,
     House2,
@@ -87,6 +89,7 @@ const images = {
     Apartment4,
     Apartment5,
     Apartment6,
+    houseBanner,
     Apartment1Lg,
     Apartment2Lg,
     Apartment3Lg,

@@ -10,12 +10,24 @@
     @apply scroll-smooth scroll-pt-6;
   }
 
+  html::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    @apply rounded-sm bg-violet-600;
+  }
+
+  html::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+
   body {
     @apply font-primary bg-gray-200;
   }
 
   .dropdown {
-    @apply w-full lg: max-w-[296px] cursor-pointer;
+    @apply w-full lg:max-w-[296px] cursor-pointer;
   }
 
   .dropdown-btn {
@@ -31,6 +43,10 @@
   }
 
   .dropdown-menu {
-    @apply px-6 py-8 text-[15px] space-y-6 shadow-md bg-white absolute w-full z-10 list-none rounded-b-lg;
+    @apply px-4 py-2 text-[15px] shadow-md bg-white absolute w-full z-10 list-none rounded-b-lg;
+  }
+
+  .dropdown-menu-item {
+    @apply px-4 py-2 rounded-md cursor-pointer hover:text-violet-800 hover:bg-gray-100 transition;
   }
 }

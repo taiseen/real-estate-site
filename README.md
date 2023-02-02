@@ -2,7 +2,7 @@
 
 ## Real-Estate
 
-# React + Tailwind CSS | [Live Link](www)
+# React + Tailwind CSS | [Live Link](https://realestate-lp.netlify.app)
 
 ## This app based on - vite 
 
@@ -36,10 +36,11 @@ yarn dev
 * File & Folder Structure
 * CSS writing structure
 * Responsive Mobile Menu
+* 
 
 <!-- 
 
 https://youtu.be/CHe_QJcTK5Y
-https://app.netlify.com/sites/realestate-lp/overview
+https://app.netlify.com/sites/realestate-lp/deploys
 
 -->
