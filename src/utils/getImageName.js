@@ -1,4 +1,4 @@
-export const imageName = imgPath => {
+export const getImageName = imgPath => {
 
     const lastIndex = imgPath.split('/').length - 1;
     const imageName = imgPath.split('/')[lastIndex].split('.')[0];

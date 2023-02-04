@@ -1,13 +1,19 @@
 import { BiBath, BiBed, BiArea } from 'react-icons/bi';
+import { getImageName } from '../utils/getImageName';
 import { useParams, Link } from 'react-router-dom';
-import { imageName } from '../utils/imageName';
-import { housesData } from '../db/data';
+import { housesDB } from '../db/data';
 
 const PropertyDetails = () => {
 
   const { id } = useParams();
 
-  const property = housesData?.find(house => house.id === +id); // 🔎 find operation in database...
+  const property = housesDB?.find(house => house.id === +id); // 🔎 find operation in database...
+
+  const propertyDetails = [
+    { numbers: property.bedrooms, icons: BiBed },
+    { numbers: property.bathrooms, icons: BiBath },
+    { numbers: property.surface, icons: BiArea },
+  ]
 
   return (
     <section>
@@ -35,21 +41,17 @@ const PropertyDetails = () => {
           <div className='max-w-[768px]'>
 
             <div className='mb-8'>
-              <img src={property.imageLg} alt={imageName(property.imageLg)} loading="lazy" />
+              <img src={property.imageLg} alt={getImageName(property.imageLg)} loading="lazy" />
             </div>
 
             <div className='flex gap-x-6 mb-6 text-violet-700'>
-              <div className='flex items-center gap-x-2'>
-                <BiBed className='text-2xl' /> <div>{property.bedrooms}</div>
-              </div>
-
-              <div className='flex items-center gap-x-2'>
-                <BiBath className='text-2xl' /> <div>{property.bathrooms}</div>
-              </div>
-
-              <div className='flex items-center gap-x-2'>
-                <BiArea className='text-2xl' /> <div>{property.surface}</div>
-              </div>
+              {
+                propertyDetails.map((info, idx) => (
+                  <div className='flex items-center gap-x-2' key={idx}>
+                    <info.icons className='text-2xl' /> <div>{info.numbers}</div>
+                  </div>
+                ))
+              }
             </div>
 
             <div className='text-justify text-lg text-gray-700'>{property.description}</div>
@@ -61,7 +63,11 @@ const PropertyDetails = () => {
             <div className='flex items-center gap-x-4 mb-8'>
 
               <div className='w-20 h-20 p-1 border border-gray-400 rounded-full group-hover:border-violet-700 duration-300'>
-                <img src={property.agent.image} alt={imageName(property.agent.image)} loading="lazy" />
+                <img
+                  loading="lazy"
+                  src={property.agent.image}
+                  alt={getImageName(property.agent.image)}
+                />
               </div>
 
               <div className='font-bold text-lg'>

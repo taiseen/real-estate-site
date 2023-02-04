@@ -1,14 +1,13 @@
 import { useHouseContext } from '../context/HouseContext';
 import { ImSpinner2 } from 'react-icons/im';
 import { Link } from 'react-router-dom';
-import { housesData } from '../db/data';
+import { housesDB } from '../db/data';
 import { House } from '.';
 
 
 const HouseList = () => {
 
   const { houses, loading } = useHouseContext();
-
 
   if (loading) {
     return (
@@ -27,8 +26,10 @@ const HouseList = () => {
       <div className="container mx-auto">
 
         {
-          housesData.length !== houses.length &&
-          <p className='text-center text-lg lg:text-2xl text-gray-600 mb-6'>🔎 {houses.length} result found...</p>
+          housesDB.length !== houses.length &&
+          <p className='text-center text-lg lg:text-2xl text-gray-700 mb-6'>
+            🔎 <span className='text-violet-700 font-semibold'>{houses.length}</span> result found...
+          </p>
         }
 
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12'>

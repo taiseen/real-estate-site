@@ -2,6 +2,7 @@ import { DropdownPriceRange, DropdownProperty, DropdownCountry } from '.';
 import { useHouseContext } from '../context/HouseContext';
 import { RiSearch2Line } from 'react-icons/ri';
 
+
 const Search = () => {
 
   const { handleSearchClick } = useHouseContext();

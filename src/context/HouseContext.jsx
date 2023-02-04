@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { housesData } from '../db/data'; 
+import { housesDB } from '../db/data'; 
 
 const HouseInfo = createContext();
 
 export const HouseContext = ({ children }) => {
 
-  // housesData ==> come from database...
-  const [houses, setHouses] = useState(housesData);
+  // housesDB ==> come from database...
+  const [houses, setHouses] = useState(housesDB);
 
   const [price, setPrice] = useState('Price (any)');
   const [country, setCountry] = useState('Location (any)');
@@ -60,7 +60,7 @@ export const HouseContext = ({ children }) => {
     // 🔎🔎🔎 searching mechanism for properties... 🔎🔎🔎
     // this [house data source] is to much important to understand 
     // that where its come from... | its come from database...
-    const searchResults = housesData.filter(house => {
+    const searchResults = housesDB.filter(house => {
 
       const housePrice = +house.price; // convert price - string into number...
 
@@ -119,6 +119,7 @@ export const HouseContext = ({ children }) => {
 
   };
 
+  
   const propertyInfo = {
     houses,
     price,
@@ -135,6 +136,7 @@ export const HouseContext = ({ children }) => {
     priceRange,
     handleSearchClick,
   };
+
 
   return (
     <HouseInfo.Provider value={propertyInfo}>

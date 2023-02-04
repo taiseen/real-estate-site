@@ -1,6 +1,6 @@
 import images from '../assets';
 
-export const housesData = [
+export const housesDB = [
   {
     id: 1,
     type: 'House',
