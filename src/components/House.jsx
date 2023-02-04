@@ -8,11 +8,11 @@ const House = ({ house }) => {
     <div className='w-full max-w-[352px] mx-auto cursor-pointer
     bg-white shadow-1 p-5 rounded-lg rounded-tl-[90px] hover:shadow-2xl transition duration-300'>
 
-      <img src={image} alt={imageName(image)} className='mb-5' />
+      <img src={image} alt={imageName(image)} className='mb-5' loading="lazy" />
 
       <div className='mb-4 flex gap-x-2 text-sm justify-between'>
-        <div className='bg-green-500 rounded-full px-3 text-white'>{type}</div>
-        <div className='bg-violet-500 rounded-full px-3 text-white'>{country}</div>
+        <div className='bg-green-500 rounded-full px-3 py-1 text-white'>{type}</div>
+        <div className='bg-violet-500 rounded-full px-3 py-1 text-white'>{country}</div>
       </div>
 
       <div className='text-lg font-semibold max-w-[260px]'>{address}</div>

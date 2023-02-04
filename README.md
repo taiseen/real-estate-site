@@ -36,7 +36,7 @@ yarn dev
 * File & Folder Structure
 * CSS writing structure
 * Responsive Mobile Menu
-* 
+* Searching mechanism
 
 <!-- 
 

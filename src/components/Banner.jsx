@@ -18,7 +18,7 @@ const Banner = () => {
 
 
         <div className='hidden flex-1 lg:flex justify-end items-end'>
-          <img src={images.houseBanner} alt={imageName(images.houseBanner)} />
+          <img src={images.houseBanner} alt={imageName(images.houseBanner)} loading="lazy" />
         </div>
       </div>
 

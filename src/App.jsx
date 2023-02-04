@@ -6,7 +6,7 @@ import { Home, PropertyDetails } from './pages';
 const App = () => {
 
   return (
-    <main className='max-w-[1440px] mx-auto bg-white'>
+    <main className='max-w-[1440px] mx-auto bg-white/80'>
 
       <Header />
 

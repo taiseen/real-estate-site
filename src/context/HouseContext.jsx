@@ -17,7 +17,18 @@ export const HouseContext = ({ children }) => {
 
   const [loading, setLoading] = useState(false);
 
+  const priceRange = [
+    { value: 'Price (any)' },
+    { value: '10000 - 30000' },
+    { value: '30000 - 40000' },
+    { value: '100000 - 130000' },
+    { value: '130000 - 160000' },
+    { value: '160000 - 190000' },
+    { value: '190000 - 220000' },
+  ]
 
+
+  // return all countries...
   useEffect(() => {
     const allCountries = houses.map(house => house.country);
     const uniqueCountries = ['Location (any)', ...new Set(allCountries)];
@@ -25,21 +36,86 @@ export const HouseContext = ({ children }) => {
   }, []);
 
 
+  // return all properties...
   useEffect(() => {
     const allProperty = houses.map(house => house.type);
     const uniqueProperties = ['Property (any)', ...new Set(allProperty)];
     setProperties(uniqueProperties);
   }, []);
 
-  // useEffect(() => {
-  //   const allPrices = houses.map(house => house.price);
-  //   const uniquePrices = ['Price (any)', ...new Set(allPrices)];
-  //   setPrices(uniquePrices);
-  // }, []);
 
   const handleSearchClick = () => {
 
-  }
+    // console.log(country, property, price)
+
+    setLoading(true); // start loading... 
+
+    const isDefault = str => str.split(' ').includes('(any)');
+
+    // convert price - string into number...
+    const minPrice = +price.split(' ')[0]
+    const maxPrice = +price.split(' ')[2]
+
+    // 🔎🔎🔎 searching mechanism for properties... 🔎🔎🔎
+    // this [house data source] is to much important to understand 
+    // that where its come from...
+    const searchingProperties = housesData.filter(house => {
+
+      const housePrice = +house.price; // convert price - string into number...
+
+      if ( // ✅✅✅ if all values are selected... ✅✅✅
+        house.country === country &&
+        house.type === property &&
+        housePrice >= minPrice &&
+        housePrice <= maxPrice
+      ) {
+        return house;
+      }
+
+      // 🟥 if no value select... return all homes...
+      if (isDefault(country) && isDefault(property) && isDefault(price)) return house;
+
+      // ✅ if 🏴 counter is selected...
+      if (!isDefault(country) && isDefault(property) && isDefault(price)) return house.country === country;
+
+      // ✅ if 🏠 property is selected...
+      if (isDefault(country) && !isDefault(property) && isDefault(price)) return house.type === property;
+
+      // ✅ if 💰 price is selected...
+      if (isDefault(country) && isDefault(property) && !isDefault(price)) {
+
+        if (housePrice >= minPrice && housePrice <= maxPrice) return house;
+      };
+
+      // ✅ if 🏴 counter & 🏠 property is selected...
+      if (!isDefault(country) && !isDefault(property) && isDefault(price)) {
+        return house.country === country && house.type === property;
+      }
+
+      // ✅ if 🏴 counter & 💰 price is selected...
+      if (!isDefault(country) && isDefault(property) && !isDefault(price)) {
+
+        if (housePrice >= minPrice && housePrice <= maxPrice) return house.country === country;
+      };
+
+      // ✅ if 🏠 property & 💰 price is selected...
+      if (isDefault(country) && !isDefault(property) && !isDefault(price)) {
+
+        if (housePrice >= minPrice && housePrice <= maxPrice) return house.type === property;
+      };
+    });
+    console.log(searchingProperties)
+
+    // reassigned [houses] again, after we get new data values...
+    setTimeout(() => {
+      return (
+        searchingProperties?.length < 1
+          ? setHouses([])
+          : setHouses(searchingProperties), setLoading(false)
+      );
+    }, 1000);
+
+  };
 
   const propertyInfo = {
     houses,
@@ -53,6 +129,7 @@ export const HouseContext = ({ children }) => {
     countries,
     properties,
     loading,
+    priceRange,
     handleSearchClick,
   };
 

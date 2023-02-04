@@ -5,18 +5,10 @@ import { useState } from 'react';
 
 const DropdownPriceRange = () => {
 
-  const { price, setPrice } = useHouseContext();
+  const { price, setPrice, priceRange } = useHouseContext();
   const [isOpen, setIsOpen] = useState(false);
 
-  const prices = [
-    { value: 'Price (any)' },
-    { value: '10000 - 30000' },
-    { value: '30000 - 40000' },
-    { value: '100000 - 130000' },
-    { value: '130000 - 160000' },
-    { value: '160000 - 190000' },
-    { value: '190000 - 220000' },
-  ]
+
 
   return (
     <Menu as='div' className='dropdown relative'>
@@ -42,7 +34,7 @@ const DropdownPriceRange = () => {
 
       <Menu.Items className='dropdown-menu'>
         {
-          prices.map((price, idx) => {
+          priceRange.map((price, idx) => {
 
             return (
               <Menu.Item
