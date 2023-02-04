@@ -1,13 +1,21 @@
-import logo from '../assets/img/logo.svg';
+import { useHouseContext } from '../context/HouseContext';
 import { Link } from 'react-router-dom';
+import { housesData } from '../db/data';
+import logo from '../assets/img/logo.svg';
+
 
 const Header = () => {
+
+  const { setHouses } = useHouseContext();
+
+  // rest search result by when user click this link...
+  const handleResetSearch = () => setHouses(housesData);
 
   return (
     <header className='py-6 mb-12 border-b'>
       <div className='container mx-auto flex justify-between items-center'>
 
-        <Link to='/' >
+        <Link to='/' onClick={() => handleResetSearch()}>
           <img src={logo} alt="logo" />
         </Link>
 

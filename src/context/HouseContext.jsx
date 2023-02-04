@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { housesData } from '../constants/data';
+import { housesData } from '../db/data'; 
 
 const HouseInfo = createContext();
 
 export const HouseContext = ({ children }) => {
 
+  // housesData ==> come from database...
   const [houses, setHouses] = useState(housesData);
 
   const [price, setPrice] = useState('Price (any)');
@@ -58,8 +59,8 @@ export const HouseContext = ({ children }) => {
 
     // 🔎🔎🔎 searching mechanism for properties... 🔎🔎🔎
     // this [house data source] is to much important to understand 
-    // that where its come from...
-    const searchingProperties = housesData.filter(house => {
+    // that where its come from... | its come from database...
+    const searchResults = housesData.filter(house => {
 
       const housePrice = +house.price; // convert price - string into number...
 
@@ -104,14 +105,15 @@ export const HouseContext = ({ children }) => {
         if (housePrice >= minPrice && housePrice <= maxPrice) return house.type === property;
       };
     });
-    console.log(searchingProperties)
 
-    // reassigned [houses] again, after we get new data values...
+    // console.log(searchResults)
+
+    // reassigned [houses] again, after we get new search result data...
     setTimeout(() => {
       return (
-        searchingProperties?.length < 1
+        searchResults?.length < 1
           ? setHouses([])
-          : setHouses(searchingProperties), setLoading(false)
+          : setHouses(searchResults), setLoading(false)
       );
     }, 1000);
 
@@ -122,6 +124,7 @@ export const HouseContext = ({ children }) => {
     price,
     country,
     property,
+    setHouses,
     setPrice,
     setCountry,
     setProperty,

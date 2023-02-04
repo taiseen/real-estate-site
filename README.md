@@ -37,10 +37,6 @@ yarn dev
 * CSS writing structure
 * Responsive Mobile Menu
 * Searching mechanism
-
-<!-- 
-
-https://youtu.be/CHe_QJcTK5Y
-https://app.netlify.com/sites/realestate-lp/deploys
-
--->
+* Parent hover child effect...
+* Show search result number
+* Reset search result

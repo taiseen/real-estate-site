@@ -5,7 +5,7 @@ import images from '../assets';
 const Banner = () => {
 
   return (
-    <section className='h-full max-h-[640px] mb-8 xl:mb-24'>
+    <section className='h-full max-h-[640px] mb-6 xl:mb-20'>
 
       <div className='flex flex-col lg:flex-row'>
         <div className='flex-1 flex flex-col item-center lg:items-start justify-center 
