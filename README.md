@@ -33,10 +33,18 @@ yarn dev
 
 
 ## Learning Context :-
-* File & Folder Structure
+* File & folder structure
 * CSS writing structure
-* Responsive Mobile Menu
+* Responsive mobile menu
 * Searching mechanism
 * Parent hover child effect...
 * Show search result number
 * Reset search result
+* 404 Page not found add
+* Auto navigation to home page
+* Usage of headless-ui
+
+* FAQ accordion add
+* Pagination
+* Custom cursor
+* Image gallery
