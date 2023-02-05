@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { housesDB } from '../db/data'; 
+import { housesDB } from '../db/data';
 
 const HouseInfo = createContext();
 
 export const HouseContext = ({ children }) => {
 
-  // housesDB ==> come from database...
-  const [houses, setHouses] = useState(housesDB);
+  const [houses, setHouses] = useState(housesDB); // housesDB ==> (assume) come from database...
+
+  const [pageNumber, setPageNumber] = useState(1); // for pagination...
 
   const [price, setPrice] = useState('Price (any)');
   const [country, setCountry] = useState('Location (any)');
@@ -47,8 +48,7 @@ export const HouseContext = ({ children }) => {
 
   const handleSearchClick = () => {
 
-    // console.log(country, property, price)
-
+    setPageNumber(1); // every time reset page number for start pagination...
     setLoading(true); // start loading... 
 
     const isDefault = str => str.split(' ').includes('(any)');
@@ -119,7 +119,7 @@ export const HouseContext = ({ children }) => {
 
   };
 
-  
+
   const propertyInfo = {
     houses,
     price,
@@ -135,6 +135,8 @@ export const HouseContext = ({ children }) => {
     loading,
     priceRange,
     handleSearchClick,
+    pageNumber,
+    setPageNumber,
   };
 
 

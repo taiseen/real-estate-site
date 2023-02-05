@@ -6,12 +6,12 @@
 
 ## This app based on - vite 
 
-after clone or download, for install dependencies, please run at terminal...
-```
+after clone or download, for `install` dependencies, please type at terminal...
+```js
 yarn
 ```
 
-& to start the application, please run...
+& to `start` or `run` this application, please type...
 ```
 yarn dev
 ```
@@ -43,8 +43,13 @@ yarn dev
 * 404 Page not found add
 * Auto navigation to home page
 * Usage of headless-ui
-
 * FAQ accordion add
-* Pagination
-* Custom cursor
+* Client side pagination
+* Related Products
 * Image gallery
+
+
+```js
+Note: context api file name extension must be '.jsx' - not '.js' 
+otherwise it will be generate error at runtime...
+```
