@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { getSearchResults } from "../helper/getSearchResults";
 import { housesDB } from '../db/data';
 
 const HouseInfo = createContext();
@@ -18,16 +19,6 @@ export const HouseContext = ({ children }) => {
   const [properties, setProperties] = useState([]);
 
   const [loading, setLoading] = useState(false);
-
-  const priceRange = [
-    { value: 'Price (any)' },
-    { value: '10000 - 30000' },
-    { value: '30000 - 40000' },
-    { value: '100000 - 130000' },
-    { value: '130000 - 160000' },
-    { value: '160000 - 190000' },
-    { value: '190000 - 220000' },
-  ]
 
 
   // return all countries...
@@ -51,62 +42,7 @@ export const HouseContext = ({ children }) => {
     setPageNumber(1); // every time reset page number for start pagination...
     setLoading(true); // start loading... 
 
-    const isDefault = str => str.split(' ').includes('(any)');
-
-    // convert price - string into number...
-    const minPrice = +price.split(' ')[0]
-    const maxPrice = +price.split(' ')[2]
-
-    // 🔎🔎🔎 searching mechanism for properties... 🔎🔎🔎
-    // this [house data source] is to much important to understand 
-    // that where its come from... | its come from database...
-    const searchResults = housesDB.filter(house => {
-
-      const housePrice = +house.price; // convert price - string into number...
-
-      if ( // ✅✅✅ if all values are selected... ✅✅✅
-        house.country === country &&
-        house.type === property &&
-        housePrice >= minPrice &&
-        housePrice <= maxPrice
-      ) {
-        return house;
-      }
-
-      // 🟥 if no value select... return all homes...
-      if (isDefault(country) && isDefault(property) && isDefault(price)) return house;
-
-      // ✅ if 🏴 counter is selected...
-      if (!isDefault(country) && isDefault(property) && isDefault(price)) return house.country === country;
-
-      // ✅ if 🏠 property is selected...
-      if (isDefault(country) && !isDefault(property) && isDefault(price)) return house.type === property;
-
-      // ✅ if 💰 price is selected...
-      if (isDefault(country) && isDefault(property) && !isDefault(price)) {
-
-        if (housePrice >= minPrice && housePrice <= maxPrice) return house;
-      };
-
-      // ✅ if 🏴 counter & 🏠 property is selected...
-      if (!isDefault(country) && !isDefault(property) && isDefault(price)) {
-        return house.country === country && house.type === property;
-      }
-
-      // ✅ if 🏴 counter & 💰 price is selected...
-      if (!isDefault(country) && isDefault(property) && !isDefault(price)) {
-
-        if (housePrice >= minPrice && housePrice <= maxPrice) return house.country === country;
-      };
-
-      // ✅ if 🏠 property & 💰 price is selected...
-      if (isDefault(country) && !isDefault(property) && !isDefault(price)) {
-
-        if (housePrice >= minPrice && housePrice <= maxPrice) return house.type === property;
-      };
-    });
-
-    // console.log(searchResults)
+    const searchResults = getSearchResults(country, property, price);
 
     // reassigned [houses] again, after we get new search result data...
     setTimeout(() => {
@@ -120,28 +56,27 @@ export const HouseContext = ({ children }) => {
   };
 
 
-  const propertyInfo = {
-    houses,
+  const shareWithChildren = {
     price,
+    houses,
     country,
     property,
-    setHouses,
+    pageNumber,
     setPrice,
+    setHouses,
     setCountry,
     setProperty,
+    setPageNumber,
     prices,
+    loading,
     countries,
     properties,
-    loading,
-    priceRange,
     handleSearchClick,
-    pageNumber,
-    setPageNumber,
   };
 
 
   return (
-    <HouseInfo.Provider value={propertyInfo}>
+    <HouseInfo.Provider value={shareWithChildren}>
       {
         children
       }

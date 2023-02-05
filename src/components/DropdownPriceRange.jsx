@@ -1,12 +1,13 @@
 import { RiWallet3Line, RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import { useHouseContext } from '../context/HouseContext';
+import { priceRange } from '../constants';
 import { Menu } from '@headlessui/react';
 import { useState } from 'react';
 
 
 const DropdownPriceRange = () => {
 
-  const { price, setPrice, priceRange } = useHouseContext();
+  const { price, setPrice } = useHouseContext();
   const [isOpen, setIsOpen] = useState(false);
 
   const isSelect = price.includes('(any)');

@@ -1,4 +1,4 @@
-import { getImageName } from '../utils/getImageName';
+import { getImageName } from '../helper/getImageName';
 import { Search } from '.';
 import images from '../assets';
 

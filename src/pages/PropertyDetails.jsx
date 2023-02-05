@@ -1,5 +1,5 @@
 import { BiBath, BiBed, BiArea } from 'react-icons/bi';
-import { getImageName } from '../utils/getImageName';
+import { getImageName } from '../helper/getImageName';
 import { useParams, Link } from 'react-router-dom';
 import { housesDB } from '../db/data';
 

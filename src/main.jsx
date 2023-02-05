@@ -11,9 +11,11 @@ ReactDOM
   .render(
     <HouseContext>
       <Routers>
+
         <React.StrictMode>
           <App />
         </React.StrictMode>
+        
       </Routers>
     </HouseContext>,
   )

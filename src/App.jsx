@@ -12,6 +12,7 @@ const App = () => {
 
       <Routes>
         <Route path='/' element={<Home />} />
+
         <Route path='/property/:id' element={<PropertyDetails />} />
 
         <Route path="*" element={<PageNotFound />} />
@@ -23,4 +24,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
