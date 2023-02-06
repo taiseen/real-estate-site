@@ -29,7 +29,7 @@ const HouseList = () => {
   }
 
   return (
-    <section className='mb-10'>
+    <section className='pt-6 mb-10'>
       <div className="container mx-auto">
 
         {

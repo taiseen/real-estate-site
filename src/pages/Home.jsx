@@ -1,4 +1,4 @@
-import { Banner, HouseList } from '../components';
+import { Banner, FAQ, HouseList } from '../components';
 
 const Home = () => {
 
@@ -7,6 +7,7 @@ const Home = () => {
 
       <Banner />
       <HouseList />
+      <FAQ />
 
     </div>
   );
