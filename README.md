@@ -45,7 +45,7 @@ yarn dev
 * Usage of headless-ui
 * FAQ accordion add
 * Client side pagination
-* Related Products
+* Related Search
 * Image gallery
 
 

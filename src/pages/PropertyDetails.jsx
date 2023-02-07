@@ -1,11 +1,16 @@
 import { BiBath, BiBed, BiArea } from 'react-icons/bi';
+import { useHouseContext } from '../context/HouseContext';
 import { getImageName } from '../helper/getImageName';
 import { useParams, Link } from 'react-router-dom';
+import { RelatedSearch } from '../components';
 import { housesDB } from '../db/data';
+
 
 const PropertyDetails = () => {
 
   const { id } = useParams();
+  const { houses } = useHouseContext();
+
 
   const property = housesDB?.find(house => house.id === +id); // 🔎 find operation in database...
 
@@ -16,8 +21,8 @@ const PropertyDetails = () => {
   ]
 
   return (
-    <section>
-      <div className='container mx-auto min-h-[800px] mb-14'>
+    <section className='container mx-auto'>
+      <div className='min-h-[800px] mb-14'>
 
         {/* 🏠 property info at heading */}
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between'>
@@ -102,6 +107,12 @@ const PropertyDetails = () => {
         </div>
 
       </div>
+
+      {
+        // if user search then display this component to help user to get related search results...
+        housesDB.length !== houses.length && <RelatedSearch houses={houses} id={id} />
+      }
+
     </section>
   );
 };
